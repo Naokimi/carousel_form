@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_04_26_143341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "empires", force: :cascade do |t|
+    t.string "name"
+    t.string "multiplayer_session_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "species", force: :cascade do |t|
+    t.string "name"
+    t.text "biography"
+    t.string "archetype"
+    t.string "portrait"
+    t.bigint "empire_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["empire_id"], name: "index_species_on_empire_id"
+  end
+
+  add_foreign_key "species", "empires"
 end
