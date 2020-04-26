@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'empires/new'
+  get 'empires/show'
   get 'empire/new'
   get 'empire/show'
   root to: 'pages#home'
