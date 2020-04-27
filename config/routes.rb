@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'empires/new'
-  get 'empires/show'
-  get 'empire/new'
-  get 'empire/show'
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :empires, only: [:new, :show, :create]
 end
