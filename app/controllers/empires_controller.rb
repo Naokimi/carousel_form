@@ -1,11 +1,20 @@
 class EmpiresController < ApplicationController
   def new
+    @empire = Empire.new
   end
 
   def create
+    @empire = Empire.new(empire_params)
+
+    if @empire.save
+      redirect_to(@empire, notice: 'Empire was successfully created.')
+    else
+      render :new
+    end
   end
 
   def show
+    @empire = Empire.find(params[:id])
   end
 
   private
