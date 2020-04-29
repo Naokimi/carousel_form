@@ -10,4 +10,6 @@
 #
 class Empire < ApplicationRecord
   has_one :species
+
+  accepts_nested_attributes_for :species, reject_if: :all_blank
 end
