@@ -9,7 +9,7 @@
 #  updated_at               :datetime         not null
 #
 class Empire < ApplicationRecord
-  has_one :species
+  has_one :species, dependent: :destroy
 
   accepts_nested_attributes_for :species, reject_if: :all_blank
 end

@@ -5,7 +5,8 @@ p Find me in app/views/empires/new.html.erb
   = f.input :name
   h3 Species
   #species
-    = f.simple_fields_for :species do |single_species|
-      = render 'species_fields', f: single_species
     .links
+    = simple_form_for [@empire, @empire.species] do |fo|
+      = fo.input :name
+      = fo.input :archetype
   = f.submit
