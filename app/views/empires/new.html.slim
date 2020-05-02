@@ -1,12 +1,11 @@
 h1 Empires#new
 p Find me in app/views/empires/new.html.erb
 
-= simple_form_for @empire do |f|
-  = f.input :name
+= form_for @empire do |f|
+  = f.text_field :name
   h3 Species
   #species
-    .links
-    = simple_form_for [@empire, @empire.species] do |fo|
-      = fo.input :name
-      = fo.input :archetype
+    = fields_for :species, @empire.species do |single_species|
+        = single_species.text_field :name
+        = single_species.text_field :biography
   = f.submit
