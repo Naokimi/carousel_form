@@ -7,14 +7,13 @@ class EmpiresController < ApplicationController
     @empire = Empire.new(empire_params)
 
     if @empire.save
-      # species = Species.new(empire_params["species"])
-      # binding.pry
-      # species.empire = @empire
-      # if species.save
+      species = Species.new(empire_params["species"])
+      species.empire = @empire
+      if species.save
         redirect_to(@empire, notice: 'Empire was successfully created.')
-      # else
-      #   render :new
-      # end
+      else
+        render :new
+      end
     else
       render :new
     end

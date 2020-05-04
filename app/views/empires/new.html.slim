@@ -2,10 +2,17 @@ h1 Empires#new
 p Find me in app/views/empires/new.html.erb
 
 = form_for @empire do |f|
+  = f.label :name
+  br
   = f.text_field :name
   h3 Species
   #species
     = fields_for :species, @empire.species do |single_species|
+        = single_species.label :name
+        br
         = single_species.text_field :name
+        br
+        = single_species.label :biography
+        br
         = single_species.text_field :biography
   = f.submit
