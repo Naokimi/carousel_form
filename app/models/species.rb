@@ -21,4 +21,10 @@
 #
 class Species < ApplicationRecord
   belongs_to :empire
+
+  def self.portraits
+    url = 'https://stellaris.paradoxwikis.com/images/'
+    species = %w[6/6e/Human 5/5c/Humanoid_02 1/1b/Humanoid_03 6/6a/Humanoid_04 7/7d/Humanoid_05]
+    species.map { |sp| url + sp + '.png'}
+  end
 end
