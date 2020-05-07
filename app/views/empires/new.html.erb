@@ -8,10 +8,9 @@
     <%= single_species.input :name %>
     <%= single_species.input :biography %>
     <% Species.portraits.each_with_index do |portrait_url, i| %>
-      <%= "<input type=\"checkbox\" name=\"species[portrait]\" id=myCheckbox#{i} value=#{portrait_url}".html_safe %>
-      <label for=<%= "myCheckbox#{i}" %> >
-        <img src=<%= portrait_url %> />
-      </label>
+      <%= "<input type=\"radio\" name=\"species[portrait]\" id=\"#{i}\" value=#{portrait_url} />".html_safe %>
+
+      <%= "<label for=\"#{i}\" ><img src=#{portrait_url} /></label>".html_safe %>
     <% end %>
   <% end %>
   <%= f.submit %>
