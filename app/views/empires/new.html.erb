@@ -1,0 +1,18 @@
+<h1>Empires#new</h1>
+<p>Find me in app/views/empires/new.html.erb</p>
+
+<%= simple_form_for @empire do |f| %>
+  <%= f.input :name %>
+  <h3>Species</h3>
+  <%= simple_fields_for :species do |single_species| %>
+    <%= single_species.input :name %>
+    <%= single_species.input :biography %>
+    <% Species.portraits.each_with_index do |portrait_url, i| %>
+      <%= "<input type=\"checkbox\" name=\"species[portrait]\" id=myCheckbox#{i} value=#{portrait_url}".html_safe %>
+      <label for=<%= "myCheckbox#{i}" %> >
+        <img src=<%= portrait_url %> />
+      </label>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
