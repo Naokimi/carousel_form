@@ -7,6 +7,7 @@
   <%= simple_fields_for :species do |single_species| %>
     <%= single_species.input :name %>
     <%= single_species.input :biography %>
+    <%= single_species.input :archetype, collection: Species::ARCHETYPES, label: 'Species' %>
     <% Species.portraits.each_with_index do |portrait_url, i| %>
       <%= "<input type=\"radio\" name=\"species[portrait]\" id=\"#{i}\" value=#{portrait_url} />".html_safe %>
 

@@ -22,6 +22,9 @@
 class Species < ApplicationRecord
   belongs_to :empire
 
+  ARCHETYPES = %w[Humanoid Machine]
+  validates :archetype, inclusion: { in: ARCHETYPES }
+
   def self.portraits
     url = 'https://stellaris.paradoxwikis.com/images/'
     species = %w[6/6e/Human 5/5c/Humanoid_02 1/1b/Humanoid_03 6/6a/Humanoid_04 7/7d/Humanoid_05]
