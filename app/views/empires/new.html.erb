@@ -4,14 +4,16 @@
 <%= simple_form_for @empire do |f| %>
   <%= f.input :name %>
   <h3>Species</h3>
-  <%= simple_fields_for :species do |single_species| %>
+  <%= simple_fields_for :species, class: "species-fields" do |single_species| %>
     <%= single_species.input :name %>
     <%= single_species.input :biography, as: :text %>
-    <%= single_species.input :archetype, collection: Species::ARCHETYPES, label: 'Species' %>
-    <% Species.portraits('Humanoid').each_with_index do |portrait_url, i| %>
-      <%= "<input type=\"radio\" name=\"species[portrait]\" id=\"#{i}\" value=#{portrait_url} />".html_safe %>
-      <%= "<label for=\"#{i}\" ><img src=#{portrait_url} /></label>".html_safe %>
-    <% end %>
+    <%= single_species.input :archetype, collection: Species::ARCHETYPES, label: 'Species'%>
+    <div class="portrait-selection">
+      <% Species.portraits['Humanoid'].each_with_index do |portrait_url, i| %>
+        <%= "<input type=\"radio\" name=\"species[portrait]\" id=\"#{i}\" value=#{portrait_url} />".html_safe %>
+        <%= "<label for=\"#{i}\" ><img src=#{portrait_url} /></label>".html_safe %>
+      <% end %>
+    </div>
   <% end %>
   <%= f.submit %>
 <% end %>

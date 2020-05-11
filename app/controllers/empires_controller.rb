@@ -1,6 +1,13 @@
 class EmpiresController < ApplicationController
   def new
     @empire = Empire.new
+
+    json = Species.portraits
+
+    respond_to do |format|
+      format.html
+      format.json { render json: json }
+    end
   end
 
   def create

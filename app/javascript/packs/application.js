@@ -27,8 +27,14 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { getPortraits } from './species_portraits';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+const archetype = document.querySelector('#species_archetype');
+if (archetype) {
+  getPortraits(archetype);
+};

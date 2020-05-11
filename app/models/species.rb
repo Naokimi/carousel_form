@@ -25,18 +25,20 @@ class Species < ApplicationRecord
   ARCHETYPES = %w[Humanoid Machine]
   validates :archetype, inclusion: { in: ARCHETYPES }
 
-  def self.portraits(species)
+  def self.portraits
     url = 'https://stellaris.paradoxwikis.com/images/'
-    case species
-    when 'Humanoid'
-      portraits = %w[6/6e/Human 5/5c/Humanoid_02 1/1b/Humanoid_03 6/6a/Humanoid_04 7/7d/Humanoid_05]
-    when 'Machine'
-      portraits = %w[8/8c/Alien_AI f/f3/Lithoid_machine e/e6/Synthetic_dawn_portrait_humanoid
+    portraits = {}
+    # case species
+    # when 'Humanoid'
+      portraits['Humanoid'] = %w[6/6e/Human 5/5c/Humanoid_02 1/1b/Humanoid_03 6/6a/Humanoid_04 7/7d/Humanoid_05]
+    # when 'Machine'
+      portraits['Machine'] = %w[8/8c/Alien_AI f/f3/Lithoid_machine e/e6/Synthetic_dawn_portrait_humanoid
         c/c4/Synthetic_dawn_portrait_mammalian 6/62/Synthetic_dawn_portrait_reptilian
         9/90/Synthetic_dawn_portrait_avian e/ef/Synthetic_dawn_portrait_arthopoid
         9/9d/Synthetic_dawn_portrait_molluscoid c/c7/Synthetic_dawn_portrait_fungoid
         4/4f/Synthetic_dawn_portrait_plantoid]
-    end
-    portraits.map { |sp| url + sp + '.png'}
+    # end
+    # portraits.map { |sp| url + sp + '.png'}
+    portraits
   end
 end
